@@ -1,11 +1,7 @@
 <script setup lang="ts">
-// definePageMeta({
-//   layout: 'another'
-// })
-
-// function enableCustomLayout() {
-//   setPageLayout('another')
-// }
+useHead({
+  title: 'About',
+})
 const route = useRoute()
 </script>
 
