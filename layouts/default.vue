@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Menu from "~/components/menu.vue";
 useHead({
   titleTemplate: '%s - Yanni Pavlov',
   link: [
@@ -19,12 +18,17 @@ useHead({
 <template>
   <div class="container mx-auto max-w-2xl">
     <header class="flex items-center justify-between mt-5">
-      <div>
-        <NuxtLink to="/" class="text-2xl font-semibold p-2 hover:bg-gray-200">Yanni Pavlov</NuxtLink>
+      <div class="flex items-center space-x-12">
+        <div>
+          <NuxtLink to="/" class="text-2xl font-semibold p-2 hover:bg-gray-200">Yanni Pavlov</NuxtLink>
+        </div>
+        <Menu/>
       </div>
-      <Menu/>
+      <ClientOnly>
+        <ColorModeSelector />
+      </ClientOnly>
     </header>
-    <main class="p-2">
+    <main class="p-2 mt-10">
       <slot />
     </main>
   </div>
@@ -33,5 +37,10 @@ useHead({
 <style>
 body {
   font-family: 'Roboto', sans-serif;
+  @apply
+  bg-white
+  dark:bg-gray-800
+  text-gray-700
+  dark:text-gray-300
 }
 </style>
