@@ -1,20 +1,5 @@
-<script setup lang="ts">
-useHead({
-  title: 'About',
-})
-const route = useRoute()
-</script>
-
 <template>
-  <div>
-    <h1>This page is about me.</h1>
-    <p>Current route: {{ route.path }}</p>
-  </div>
-  <!--    <div>-->
-  <!--      <button @click="enableCustomLayout">enableCustomLayout</button>-->
-  <!--    </div>-->
+  <article class="prose dark:prose-invert prose-h1:text-2xl">
+    <ContentDoc path="/about"/>
+  </article>
 </template>
-
-<style scoped>
-
-</style>
