@@ -17,9 +17,9 @@ useHead({
 
 <template>
   <div class="container mx-auto max-w-4xl">
-    <header class="flex items-center justify-between mt-5">
-      <div class="flex items-center space-x-12">
-        <div>
+    <header class="flex items-start md:items-center justify-between mt-5">
+      <div class="flex items-center md:space-x-12">
+        <div class="hidden md:block">
           <NuxtLink to="/" class="text-2xl font-semibold p-2 hover:bg-gray-200 dark:hover:bg-gray-800">Yanni Pavlov</NuxtLink>
         </div>
         <Menu/>
