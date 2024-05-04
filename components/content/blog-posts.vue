@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const props = defineProps({
   limit: {
     type: Number,
@@ -46,9 +46,9 @@ const posts = computed(() => {
       </div>
       <ul>
         <li v-for="post in posts" :key="post._path">
-          <NuxtLink :to="post._path" class="column hover:bg-gray-100 dark:hover:bg-gray-800">
+          <NuxtLink :to="post._path" class="column group hover:bg-gray-100 dark:hover:bg-gray-600">
             <div :class="{
-              'text-white dark:text-gray-900': !post.displayYear,
+              'text-white group-hover:text-gray-100 dark:text-gray-800 dark:group-hover:text-gray-600': !post.displayYear,
               'text-gray-400 dark:text-gray-500': post.displayYear
             }">
               {{ post.year }}
