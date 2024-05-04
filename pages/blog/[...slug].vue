@@ -1,12 +1,34 @@
 <script setup lang="ts">
-const route = useRoute()
-console.log('slug: ', route.params.slug)
+const activeId = ref(null)
+onMounted(() => {
+  const callback = (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        activeId.value = entry.target.id
+        break;
+      }
+    }
+  }
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    threshold: 0.5,
+  })
+  const elements = document.querySelectorAll('h2, h3')
+  for (const element of elements) {
+    observer.observe(element)
+  }
+
+  onBeforeUnmount(() => {
+    for (const element of elements) {
+      observer.unobserve(element)
+    }
+  })
+})
 </script>
 
 <template>
   <article class="prose dark:prose-invert max-w-none prose-pre:bg-white dark:prose-pre:bg-gray-700 prose-pre:text-gray-700 dark:text-gray-300">
     <ContentDoc v-slot="{ doc }">
-      {{ doc.body.toc.links }}
       <div class="grid grid-cols-6 gap-16">
         <div :class="{
           'col-span-4': doc.toc,
@@ -20,7 +42,7 @@ console.log('slug: ', route.params.slug)
               Table of Contents
             </div>
             <nav>
-              <TocLinks :links="doc.body.toc.links"></TocLinks>
+              <TocLinks :links="doc.body.toc.links" :active-id="activeId" />
             </nav>
           </aside>
         </div>
